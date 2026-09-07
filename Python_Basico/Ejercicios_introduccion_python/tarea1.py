@@ -1,0 +1,5 @@
+print("Hola Mundo")
+print("Hola mi nombre es Daniela")
+print(1 + 1)
+print(90 + 4300)
+print(4 * 5)
