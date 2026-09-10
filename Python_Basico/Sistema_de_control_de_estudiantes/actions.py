@@ -1,11 +1,17 @@
 import menu as menu_module
 import data as data_module
+import sys
 
-def asking_for_n_students(file_path):
+
+def asking_for_n_students():
     list_of_students = []
     counter = 1
-    n_students = int(input("Type number of students to enter: "))
-    while counter <= n_students:
+    n_students = input("Type number of students to enter: ")
+
+    while not n_students.isdigit():
+        n_students = input("Type number of students to enter: ")
+
+    while counter <= int(n_students):
         student_name = input(f"Full Student name {counter}: ")
         student_section = input(f"Section of {student_name}: ")
         spanish_grade = validations(student_name,"Spanish")
@@ -21,20 +27,21 @@ def asking_for_n_students(file_path):
                    "Science Grade" : science_grade }
         list_of_students.append(student)
         counter += 1
-    data_module.save_students(file_path,list_of_students)
-    print("Student Succesfully added")
-    return_to_menu()
 
+        
+    return list_of_students
 
 def validations(student, subject):
+    grade = 0
     try:
-        grade = float(input(f"Type grade for {student}, assigment {subject}: "))
-        if (0 <= grade <= 100):
-            return grade
-        else:
+        grade = input(f"Type grade for {student}, assigment {subject}: ")
+        while not grade.isdigit():
+            grade = input(f"Type a valid grade for {student}, assignment {subject}: ")      
+        while not (0 <= float(grade) <= 100):
             grade = float(input(f"Type a valid grade for {student}, assignment {subject}: "))
     except ValueError:
         grade = float(input(f"Type a valid grade for {student}, assignment {subject}: "))
+    return float(grade)
 
 def get_average(grades):
     average = 0
@@ -65,7 +72,7 @@ def list_of_students(list):
         print("There are no students to show")
     return_to_menu()
 
-def sort_top_averages(grades):
+def sort_top_3_averages(grades):
     average = 0
     top_average = []
     try:
@@ -76,7 +83,7 @@ def sort_top_averages(grades):
 
         sort_by_average = sorted(top_average, key= lambda x:x["Average"], reverse=True)[:3]
 
-        print("Top 3 students with best average grade")
+        print("Top 3 students with best average grade: ")
         for average in sort_by_average:
             print(f"Student name: {average['Student Name']}, average: {average['Average']}")
             print
@@ -87,14 +94,35 @@ def sort_top_averages(grades):
 def return_to_menu():
     print("¿Would you like to return to menu?")
     print("Type 1 for YES or 2 for EXIT")
-    selection = int(input("your answer: "))
-    try: 
-        match selection:
-            case 1: 
-                menu_module.menu_principal()
-            case 2: 
-                SystemExit()
-            case _:
-                print("Invalid Selection")
-    except ValueError: 
-        selection = int(input("your answer: "))
+    selection = input("your answer: ")
+    while not selection.isdigit():
+        selection = input("Enter a valid number: ")
+
+    while not (1 <= int(selection) <= 2):
+        selection = int(input("Select a valid option 1 or 2: "))
+
+    seleccion_final(selection)
+
+def seleccion_final(seleccion_final):
+    
+    match int(seleccion_final):
+        case 1: 
+            menu_module.menu_principal()
+        case 2:
+            sys.exit("Chao")
+
+def validate_selection():
+    validation = input("Select an option from Menu: ")
+    while not validation.isdigit():
+        validation = input("Select an option from Menu: ")
+
+    while not (1 <= int(validation) <= 7):
+        validation = int(input("Select a valid option from Menu from 1 to 7: "))
+
+    return int(validation)
+
+def save_records(file_path, data):
+    data_module.save_students(file_path,data)
+
+    print("Student Succesfully added")
+    return_to_menu()

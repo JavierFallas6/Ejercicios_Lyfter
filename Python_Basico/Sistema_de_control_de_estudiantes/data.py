@@ -18,5 +18,5 @@ def read_students(file_path):
                 list_student.append(studens)
         
     except FileNotFoundError:
-        print("File not found")
+        print("No previoous records found")
     return list_student
