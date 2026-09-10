@@ -31,16 +31,16 @@ def asking_for_n_students(list_of_students):
     return list_of_students
 
 def validations(student, subject):
-    grade = 0
-    try:
-        grade = input(f"Type grade for {student}, assigment {subject}: ")
-        while not grade.isdigit():
-            grade = input(f"Type a valid grade for {student}, assignment {subject}: ")      
-        while not (0 <= float(grade) <= 100):
-            grade = float(input(f"Type a valid grade for {student}, assignment {subject}: "))
-    except ValueError:
-        grade = float(input(f"Type a valid grade for {student}, assignment {subject}: "))
-    return float(grade)
+    while True:
+        try:
+            grade = float(input(f"Type grade for {student}, assigment {subject}: "))
+            while not 1 <= grade <= 100:
+                grade = float(input(f"Grade out of range, Type grade for {student}, assigment {subject}: "))
+            return grade
+        except ValueError:
+            print("Invalid number")
+        else:
+            break
 
 def get_average(grades):
     average = 0
@@ -91,14 +91,16 @@ def sort_top_3_averages(grades):
 def return_to_menu(final_list):
     print("¿Would you like to return to menu?")
     print("Type 1 for YES or 2 for EXIT")
-    selection = input("your answer: ")
-    while not selection.isdigit():
-        selection = input("Enter a valid number: ")
-
-    while not (1 <= int(selection) <= 2):
-        selection = int(input("Select a valid option 1 or 2: "))
-
-    seleccion_final(selection,final_list)
+    while True:
+        try:
+            selection = int(input("Your Answer "))
+            while not 1 <= selection <= 2:
+                selection = int(input("Your Answer: "))
+            seleccion_final(selection,final_list)
+        except ValueError:
+            print("Invalid Selection")
+        else:
+            break
 
 def seleccion_final(seleccion_final,final_list):
     
@@ -109,15 +111,16 @@ def seleccion_final(seleccion_final,final_list):
             sys.exit("Chao")
 
 def validate_selection():
-    validation = input("Select an option from Menu: ")
-    
-    while not validation.isdigit():
-        validation = input("Select an option from Menu: ")
-
-    while not (1 <= int(validation) <= 7):
-        validation = int(input("Select a valid option from Menu from 1 to 7: "))
-
-    return int(validation)
+    while True:
+        try:
+            validation = int(input("Select an option from Menu: "))
+            while not 1 <= validation <= 7:
+                validation = int(input("Select an option from Menu: "))
+            return validation
+        except ValueError:
+            print("Invalid option from Menu")
+        else:
+            break
 
 def save_records(file_path, data):
     data_module.save_students(file_path,data)
