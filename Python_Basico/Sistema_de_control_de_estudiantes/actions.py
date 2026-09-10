@@ -3,8 +3,7 @@ import data as data_module
 import sys
 
 
-def asking_for_n_students():
-    list_of_students = []
+def asking_for_n_students(list_of_students):
     counter = 1
     n_students = input("Type number of students to enter: ")
 
@@ -70,7 +69,6 @@ def list_of_students(list):
   
     except TypeError as error:
         print("There are no students to show")
-    return_to_menu()
 
 def sort_top_3_averages(grades):
     average = 0
@@ -89,9 +87,8 @@ def sort_top_3_averages(grades):
             print
     except ValueError as error:
         print("There is not data to show top 3 students with best average")
-    return_to_menu()
 
-def return_to_menu():
+def return_to_menu(final_list):
     print("¿Would you like to return to menu?")
     print("Type 1 for YES or 2 for EXIT")
     selection = input("your answer: ")
@@ -101,18 +98,19 @@ def return_to_menu():
     while not (1 <= int(selection) <= 2):
         selection = int(input("Select a valid option 1 or 2: "))
 
-    seleccion_final(selection)
+    seleccion_final(selection,final_list)
 
-def seleccion_final(seleccion_final):
+def seleccion_final(seleccion_final,final_list):
     
     match int(seleccion_final):
         case 1: 
-            menu_module.menu_principal()
+            menu_module.menu_principal(final_list)
         case 2:
             sys.exit("Chao")
 
 def validate_selection():
     validation = input("Select an option from Menu: ")
+    
     while not validation.isdigit():
         validation = input("Select an option from Menu: ")
 
@@ -125,4 +123,3 @@ def save_records(file_path, data):
     data_module.save_students(file_path,data)
 
     print("Student Succesfully added")
-    return_to_menu()
