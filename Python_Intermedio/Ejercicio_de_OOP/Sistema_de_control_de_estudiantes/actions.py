@@ -13,18 +13,24 @@ class Student():
         self.science_grade = science_grade
 
 def asking_for_n_students(list_of_students):
+    counter = 1
+    n_students = input("Type number of students to enter: ")
+
+    while not n_students.isdigit():
+        n_students = input("Type number of students to enter: ")
+
+    while counter <= int(n_students):
+
+        name = input(f"Full Student name: ")
+        section = input(f"Section of {name}: ")
+        score_1 = validations(name,"Spanish")
+        score_2 = validations(name,"English")
+        score_3 = validations(name,"Socials")
+        score_4 = validations(name,"Science")
 
 
-    name = input(f"Full Student name: ")
-    section = input(f"Section of {name}: ")
-    score_1 = validations(name,"Spanish")
-    score_2 = validations(name,"English")
-    score_3 = validations(name,"Socials")
-    score_4 = validations(name,"Science")
-
-    
-    list_of_students.append(Student(name, section,score_1,score_2,score_3,score_4))
-
+        list_of_students.append(Student(name, section,score_1,score_2,score_3,score_4))
+        counter += 1
         
     return list_of_students
 
@@ -45,25 +51,24 @@ def get_average(grades):
     top_average = []
     try:
         for grade in grades:
-            average = (float(grade['Spanish Grade']) + float(grade['English Grade']) + float(grade['Socials Grade']) + float(grade['Science Grade']))/4
-            print(f"The average grade of {grade['Student Name']} is: {average}")
-            averages = {"Student Name" : grade['Student Name'], "Average": average}
+            average = (float(grade.spanish_grade) + float(grade.english_grade) + float(grade.socials_grade) + float(grade.science_grade))/4
+            print(f"The average grade of {grade.student_name} is: {average}")
+            averages = {"Student Name" : grade.student_name, "Average": average}
             top_average.append(averages)
 
     except ValueError as error:
         print("No grades to average")
-    return_to_menu()
 
 def list_of_students(list):
 
     try:
         for students in list:
-            print(f"Student Name: {students['Student Name']}")
-            print(f"Section: {students['Section']}")
-            print(f"Spanish Grade: {students['Spanish Grade']}")
-            print(f"English Grade: {students['English Grade']}")
-            print(f"Socials Grade: {students['Socials Grade']}")
-            print(f"Science Grade: {students['Science Grade']}")
+            print(f"Student Name: {students.student_name}")
+            print(f"Section: {students.student_section}")
+            print(f"Spanish Grade: {students.spanish_grade}")
+            print(f"English Grade: {students.english_grade}")
+            print(f"Socials Grade: {students.socials_grade}")
+            print(f"Science Grade: {students.science_grade}")
   
     except TypeError as error:
         print("There are no students to show")
@@ -73,8 +78,8 @@ def sort_top_3_averages(grades):
     top_average = []
     try:
         for grade in grades:
-            average = (float(grade['Spanish Grade']) + float(grade['English Grade']) + float(grade['Socials Grade']) + float(grade['Science Grade']))/4
-            averages = {"Student Name" : grade['Student Name'], "Average": average}
+            average = (float(grade.spanish_grade) + float(grade.english_grade) + float(grade.socials_grade) + float(grade.science_grade))/4
+            averages = {"Student Name" : grade.student_name , "Average": average}
             top_average.append(averages)
 
         sort_by_average = sorted(top_average, key= lambda x:x["Average"], reverse=True)[:3]
@@ -121,6 +126,34 @@ def validate_selection():
             break
 
 def save_records(file_path, data):
-    data_module.save_students(file_path,data)
+    list_to_export = []
+    for items in data:    
+        student = {"Student Name": items.student_name, 
+                    "Section": items.student_section,
+                    "Spanish Grade":items.spanish_grade, 
+                    "English Grade": items.english_grade,
+                    "Socials Grade":items.socials_grade,
+                    "Science Grade" : items.science_grade}
+        list_to_export.append(student)
+
+    data_module.save_students(file_path,list_to_export)
 
     print("Student Succesfully added")
+
+def convert_to_objet(list_of_students):
+    
+    list_to_convert = []
+    for items in list_of_students:
+        name = items["Student Name"]
+        section = items["Section"]
+        score_1 = items["Spanish Grade"]
+        score_2 = items["English Grade"]
+        score_3 = items["Socials Grade"]
+        score_4 = items["Science Grade"]
+
+
+        list_to_convert.append(Student(name, section,score_1,score_2,score_3,score_4))
+
+    return list_to_convert
+            
+

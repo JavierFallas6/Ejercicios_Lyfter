@@ -28,13 +28,16 @@ def menu_principal(final_list):
             actions_module.return_to_menu(final_list)
         case 5:
             exported_student = data_module.read_students(file_path)
+            exported_student = actions_module.convert_to_objet(exported_student)
             exported_student.extend(final_list)
             actions_module.save_records(file_path, exported_student)
             actions_module.return_to_menu(final_list)
         case 6:
             imported_student = data_module.read_students(file_path)
+            imported_student = actions_module.convert_to_objet(imported_student)
             print("Students imported from CSV")
-            actions_module.return_to_menu(imported_student)
+            final_list.extend(imported_student)
+            actions_module.return_to_menu(final_list)
         case 7:
             sys.exit("Chao")
 
