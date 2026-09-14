@@ -8,14 +8,14 @@ class Mother:
 
 class Kid(Father,Mother):
     def __init__(self,cromosome_father, cromosome_mother):
-        self.cromosome_father = cromosome_father
-        self.cromosome_mother = cromosome_mother
+        Father.__init__(self, cromosome_father)
+        Mother.__init__(self, cromosome_mother)
 
     def gender(self):
         if self.cromosome_father == "X" and self.cromosome_mother == "X":
-            print("It is a boy")
+            print("It is a Girl")
         else:
-            print("It is a girl")
+            print("It is a Boy")
 
 cromosome_from_Mother = "X" ##Mom always provide only a X cromosome
 cormosome_from_Father = input("Cromosome from Father X o Y select one: ")

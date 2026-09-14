@@ -11,19 +11,19 @@ class BankAccount:
 
 class SavingsAccount(BankAccount):
     def __init__(self, balance, min_balance):
-        self.balance = balance
+        super().__init__(balance)
         self.min_balance = min_balance
 
-    def withdraw(self, amount):
+    def withdraw_savings(self, amount):
         if self.balance - amount < self.min_balance:
             raise ValueError("Balance is below minimum balance accepted.")
         
-        self.balance -= amount
+        self.withdraw(amount)
 
 account = SavingsAccount(1000, 500)
 
 account.deposit(200)
 print(account.balance) 
 
-account.withdraw(800)
+account.withdraw_savings(800)
 print(account.balance)
