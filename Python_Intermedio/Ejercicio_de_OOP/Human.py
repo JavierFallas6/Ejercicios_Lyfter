@@ -33,7 +33,3 @@ class Human:
         self.right_leg = right_leg
         self.left_leg = left_leg
 
-
-right_hand = Hand()
-right_arm = Arm(right_hand)
-torso = Torso(head, right_arm)
