@@ -30,14 +30,14 @@ class Square(Shape):
 
     def calculate_perimeter(self,square):
         self.square = square
-        Perimeter = 4 * self.radious
+        Perimeter = 4 * self.square
         print(Perimeter)
 
 class Rectangle(Shape):
     def calculate_area(self, width, height):
         self.width = width
         self.height = height
-        area = self.base * self.height
+        area = self.width * self.height
         print(area)
 
     def calculate_perimeter(self,width, height):
@@ -55,4 +55,7 @@ my_circle.calculate_perimeter(5)
 my_rectangle = Rectangle()
 my_rectangle.calculate_area(5,3)
         
+my_square = Square()
+my_square.calculate_area(5)
+
 
