@@ -20,16 +20,16 @@ class User:
         )
 
 def validate_decorator(func):
-    def validate_age(User):
-        if User.age < 18:
+    def validate_age(user):
+        if user.age < 18:
             raise ValueError("Es MENOR de edad")
-        func(User)
+        func(user)
 
     return validate_age
 
 
 @validate_decorator
-def is_adult(user):
+def is_adult(User):
     print("Es mayor de edad")
 
 
