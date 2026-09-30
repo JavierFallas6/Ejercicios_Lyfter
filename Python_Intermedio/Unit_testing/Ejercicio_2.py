@@ -2,19 +2,11 @@ def sum(list):
     result = 0
     for items in list: 
         result += items
-    print(result)
     return result
-
-list_to_sum = [1,2,3,4,5] 
-sum(list_to_sum)   
 
 
 def reverse_string(text):
     return text[::-1]
-
-resultado = reverse_string("Hola")
-print(resultado)
-
 
 
 def get_primes(numbers):
@@ -36,6 +28,14 @@ def get_primes(numbers):
 
     return primes
 
+if __name__ == "__main__":
 
-numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-print(get_primes(numeros))
+    list_to_sum = [1,2,3,4,5] 
+    final_sum_result = sum(list_to_sum)  
+    print(final_sum_result) 
+
+    reverse_result = reverse_string("Hello")
+    print(reverse_result)
+
+    list_numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    print(get_primes(list_numbers))

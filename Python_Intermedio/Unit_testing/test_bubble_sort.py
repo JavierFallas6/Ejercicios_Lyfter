@@ -1,33 +1,34 @@
 from Ejercicio_1 import bubble_sort
 import pytest
+import random
 
 def test_shot_list():
 
-    input = [5,110,2,3,50]
+    short_list_input = [5,110,2,3,50]
 
-    result = bubble_sort(input)
+    result_short_list = bubble_sort(short_list_input)
 
-    assert result == [2, 3, 5, 50, 110]
+    assert result_short_list == [2, 3, 5, 50, 110]
 
 
 
 def test_long_list():
 
-    input = list(range(0,100,1))
+    long_list_input = [random.randint(0, 300) for _ in range(125)]
 
-    result = bubble_sort(input)
+    result_long_list_input = bubble_sort(long_list_input)
 
-    assert result == list(range(0,100))
+    assert result_long_list_input == sorted(long_list_input)
 
 
 
 def test_empty_list():
 
-    input = []
+    empty_list = []
 
-    result = bubble_sort(input)
+    result_empty_list = bubble_sort(empty_list)
 
-    assert result == []
+    assert result_empty_list == []
 
 
 

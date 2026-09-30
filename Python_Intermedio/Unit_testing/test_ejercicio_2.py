@@ -5,26 +5,26 @@ from Ejercicio_2 import get_primes
 
 
 def test_result_sum_list():
-    input_list = [1,2,3,4,5]
+    list_to_sum_input = [1,2,3,4,5]
 
-    result = sum(input_list)
+    result_list_to_sum_input = sum(list_to_sum_input)
 
-    assert result == 15
+    assert result_list_to_sum_input == 15
 
 
 def test_reverse_string():
 
-    input_string ="Hola" 
+    input_string ="Hello" 
 
-    result = reverse_string(input_string)
+    result_input_string = reverse_string(input_string)
 
-    assert result == "aloH"
+    assert result_input_string == "olleH"
 
 
 def test_prime_numbers():
 
-    input_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    prime_numbers_input_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
-    result = get_primes(input_list)
+    result_prime_numbers = get_primes(prime_numbers_input_list)
 
-    assert result == [2, 3, 5, 7]
+    assert result_prime_numbers == [2, 3, 5, 7]
