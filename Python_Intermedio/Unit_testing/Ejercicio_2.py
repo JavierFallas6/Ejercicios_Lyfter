@@ -1,4 +1,4 @@
-def sum(list):
+def sum_numbers(list):
     result = 0
     for items in list: 
         result += items
@@ -7,6 +7,26 @@ def sum(list):
 
 def reverse_string(text):
     return text[::-1]
+
+
+def sorted_words(chain):
+    list_words = chain.split("-")
+    sorted_word = sorted(list_words)
+    return "-".join(sorted_word)
+
+
+def count_upper_lower_case(text):
+
+    upper_case = 0
+    lower_case = 0
+
+    for letters in text:
+        if letters.isupper():
+            upper_case += 1
+        elif letters.islower():
+            lower_case += 1
+    
+    return upper_case, lower_case
 
 
 def get_primes(numbers):
@@ -39,3 +59,10 @@ if __name__ == "__main__":
 
     list_numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     print(get_primes(list_numbers))
+
+
+    result = sorted_words("python-variable-funcion-computadora-monitor")
+    print(result)
+
+    up_case, low_case = count_upper_lower_case("I love Nacion Sushi")
+    print(f"There are: {up_case} upper cases and {low_case} lower case")
