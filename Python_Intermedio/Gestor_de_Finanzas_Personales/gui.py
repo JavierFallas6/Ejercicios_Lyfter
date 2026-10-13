@@ -6,14 +6,14 @@ import Validations as validator
 def Movements_table():
     final_table_movements = dt.read_final_table()
 
-    headers = ["Profit", "Loss", "Category", "Description"]
+    headers = [ "Description","Category", "Expense","Expense Amount"]
 
     rows = [
-        [
-            movement["Profit"],
-            movement["Loss"],
+        [            
+            movement["Description"],
             movement["Category"],
-            movement["Description"]
+            movement["Expense"],
+            movement["Expense Amount"]
         ]
         for movement in final_table_movements
     ]
@@ -41,8 +41,7 @@ def Movements_table():
 def new_movement_window():
     category_options = dt.read_categories()
     layout = [[sg.Text("Description:")],[sg.Input(key="Description")],
-            [sg.Text("Type of Expense:")],[sg.Combo(values= ["Profit", "Loss"],key="expense_combo")],
-            [sg.Text("Amount $:")],[sg.Input(default_text=0, key="expense_value")],
+            [sg.Text("Type of Expense:")],[sg.Combo(values= ["Profit", "Loss"],key="expense_combo")],[sg.Text("Amount $:")],[sg.Input(default_text=0, key="expense_value")],
             [sg.Text("Select a Category:")],[sg.Combo(values= category_options,key="Combo_category")],
             [sg.Button("Save")]
     ]
@@ -56,26 +55,27 @@ def new_movement_window():
             break
         if event == "Save":
             try:
-                category_value = values["Combo_category"]
+                category_value = validator.category_empty(values["Combo_category"])
                 description_value = values["Description"]
-
-                if values["expense_combo"] =="Profit":
-                    profit_value = float(values["expense_value"])
-                    loss_value = 0
-                elif values["expense_combo"] =="Loss":
-                    loss_value = float(values["expense_value"])  
-                    profit_value = 0
+                expense_value = float(values["expense_value"])
+                type_value = values["expense_combo"]
 
 
-                movements = move.FinalMovements(profit_value,loss_value,category_value,description_value)
+                movements = move.FinalMovements(expense_value,category_value,description_value,type_value)
                 dt.save_final_table([movements])
 
                 sg.popup(
                     "Successfully Added!"
                 )
 
+                window["Description"].update("")
+                window["Combo_category"].update("")
+                window["expense_value"].update(0) 
+                window["expense_combo"].update("")                 
+
             except ValueError as error:
                 sg.popup_error(str(error))
+            
 
     window.close()
 
@@ -95,13 +95,16 @@ def new_category_window():
             try:
                 category_value = values["new_category"]
 
-                validator.category_validation(category_value)
+                category_value = validator.category_validation(category_value)
                 category_to_add = move.Categories(category_value)
                 dt.save_categories([category_to_add])
 
                 sg.popup(
                     "Category successfully Added!"
                 )
+
+                window["new_category"].update("")
+
 
             except ValueError as error:
                 sg.popup_error(str(error))            

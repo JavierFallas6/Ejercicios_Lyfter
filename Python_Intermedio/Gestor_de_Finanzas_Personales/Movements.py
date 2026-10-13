@@ -1,8 +1,7 @@
 
 class Expenses:
-    def __init__(self, profits, losses):
-        self.profits = profits
-        self.losses = losses
+    def __init__(self, expense_amount):
+        self.expense_amount = expense_amount
 
 
 class Categories:
@@ -11,9 +10,11 @@ class Categories:
 
 
 class FinalMovements(Expenses, Categories):
-    def __init__(self, profits, losses, category, movement_description):
-        Expenses.__init__(self, profits, losses)
+    def __init__(self, expense_amount, category, movement_description,expense):
+        Expenses.__init__(self, expense_amount)
         Categories.__init__(self, category)
         self.movement_description = movement_description
+        self.expense = expense
+
 
 

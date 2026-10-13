@@ -35,7 +35,7 @@ def save_categories(data):
     file_is_empty = (not file_exists or os.path.getsize("Categories.csv") == 0)
     headers = ["Categories"]
 
-    with open("Categories.csv", "w", encoding="utf-8", newline="") as file:
+    with open("Categories.csv", "a", encoding="utf-8", newline="") as file:
         writer = csv.DictWriter(file, fieldnames=headers)
 
         if file_is_empty:
@@ -43,7 +43,7 @@ def save_categories(data):
 
         for categories in data:
             categories_dictionary = {
-                "Categories": categories.category,
+                "Categories": categories.category
             }
 
             writer.writerow(categories_dictionary)
@@ -52,7 +52,7 @@ def save_final_table(data):
     file_exists = os.path.exists("Final_Table.csv")
     file_is_empty = (not file_exists or os.path.getsize("Final_Table.csv") == 0)
 
-    headers = ["Profit", "Loss", "Category", "Description"]
+    headers = ["Description", "Category","Expense","Expense Amount"]
 
     with open("Final_Table.csv", "a", encoding="utf-8", newline="") as file:
         writer = csv.DictWriter(file, fieldnames=headers)
@@ -62,10 +62,10 @@ def save_final_table(data):
 
         for movement in data:
             movement_dictionary = {
-                "Profit": movement.profits,
-                "Loss": movement.losses,
+                "Description": movement.movement_description,
                 "Category": movement.category,
-                "Description": movement.movement_description
+                "Expense": movement.expense,
+                "Expense Amount": movement.expense_amount,
             }
 
             writer.writerow(movement_dictionary)
