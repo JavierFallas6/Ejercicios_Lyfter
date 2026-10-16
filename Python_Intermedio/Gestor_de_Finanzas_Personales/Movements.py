@@ -1,20 +1,15 @@
 
-class Expenses:
-    def __init__(self, expense_amount):
-        self.expense_amount = expense_amount
+class PersonalFinancialManager:
+    movement_record = []
+    categories_record = []
 
+    def categories_list(self, category_to_create):
+        self.categories_record.append(category_to_create)
 
-class Categories:
-    def __init__(self, category):
-        self.category = category
+    def final_movements(self,movement_description,category,expense_type,expense_amount):
+        final_movement_list = [movement_description,category,expense_type,expense_amount]
 
-
-class FinalMovements(Expenses, Categories):
-    def __init__(self, expense_amount, category, movement_description,expense):
-        Expenses.__init__(self, expense_amount)
-        Categories.__init__(self, category)
-        self.movement_description = movement_description
-        self.expense = expense
+        self.movement_record.append(final_movement_list)
 
 
 
