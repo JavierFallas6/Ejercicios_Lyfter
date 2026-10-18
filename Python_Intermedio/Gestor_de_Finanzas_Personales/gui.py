@@ -1,6 +1,8 @@
 import FreeSimpleGUI as sg
 import movements as move
 import validations as validator
+import data as dt
+import import_data as id
 
 
 
@@ -9,7 +11,7 @@ def new_movement_window():
     category_options = financial_record.categories_record
 
     layout = [[sg.Text("Description:")],[sg.Input(key="Description")],
-            [sg.Text("Type of Expense:")],[sg.Combo(default_value="Profit", values= ["Profit", "Loss"],key="expense_combo")],[sg.Text("Amount $:")],[sg.Input(default_text=0, key="expense_value")],
+            [sg.Text("Type of Expense:")],[sg.Combo(default_value="Profit", values= ["Profit", "Loss"],key="expense_combo", readonly=True)],[sg.Text("Amount $:")],[sg.Input(default_text=0, key="expense_value")],
             [sg.Text("Select a Category:")],[sg.Combo(values= category_options,key="Combo_category", readonly=True)],
             [sg.Button("Save")]
     ]
@@ -44,7 +46,7 @@ def new_movement_window():
                 )
 
                 window["Description"].update("")
-                window["Combo_category"].update("")
+                window["Combo_category"].update("Profit")
                 window["expense_value"].update(0) 
                 window["expense_combo"].update("")                   
 
@@ -89,6 +91,8 @@ def new_category_window():
     window.close()
 
 def gui_principal():
+    id.import_existing_categories()
+    id.import_existing_data()
     final_table_movements = move.PersonalFinancialManager()
     final_table_movements = final_table_movements.movement_record
 
@@ -105,7 +109,7 @@ def gui_principal():
     ]
 
     layout = [[sg.Table(values=rows,headings=headers,key="table",auto_size_columns=True,justification="center",expand_x=True,expand_y=True)],
-            [sg.Button("Add New Movement")],[sg.Button("Add New Category")]
+            [sg.Button("Add New Movement")],[sg.Button("Add New Category")],[sg.Button("Export to CSV")]
     ]
 
     
@@ -135,6 +139,13 @@ def gui_principal():
         
         elif event == "Add New Category":
             new_category_window()           
+
+        elif event == "Export to CSV":
+
+            dt.save_final_table(rows)
+            sg.popup("Data Exported")
+
+
 
     window.close()
 
