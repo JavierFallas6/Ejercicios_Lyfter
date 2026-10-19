@@ -1,18 +1,20 @@
 import movements as move
 
 
-def validate_category(category_to_validate):
-    categories_list = move.PersonalFinancialManager()
-    categories_list = categories_list.categories_record
-    categories_list = [category.lower() for category in categories_list]
+def validate_category(category_to_validate, manager):
+    categories_list = [
+        category.new_category.lower()
+        for category in manager.categories_record
+    ]
 
     if category_to_validate.lower() in categories_list:
         raise ValueError("Category Already exist")
+
     return category_to_validate
 
 def validate_category_empty(category):
     if not category:
-        raise ValueError("Can not add an empty Category, please add Category")
+        raise ValueError("A categorie has not been added or selected")
     return category
 
 def validate_amount(amount_to_validate):
