@@ -8,7 +8,7 @@
   },
   "item": [
     {
-      "name": "Get Contest",
+      "name": "Get Contest Type",
       "request": {
         "method": "GET",
         "header": [],
@@ -17,155 +17,6 @@
         }
       },
       "response": [
-        {
-          "name": "Get Contest effect",
-          "originalRequest": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "https://pokeapi.co/api/v2/contest-effect/3/",
-              "protocol": "https",
-              "host": [
-                "pokeapi",
-                "co"
-              ],
-              "path": [
-                "api",
-                "v2",
-                "contest-effect",
-                "3",
-                ""
-              ]
-            }
-          },
-          "status": "OK",
-          "code": 200,
-          "_postman_previewlanguage": "json",
-          "header": [
-            {
-              "key": ":status",
-              "value": "200"
-            },
-            {
-              "key": "date",
-              "value": "Mon, 26 Oct 2026 01:18:22 GMT"
-            },
-            {
-              "key": "content-type",
-              "value": "application/json; charset=utf-8"
-            },
-            {
-              "key": "content-length",
-              "value": "360"
-            },
-            {
-              "key": "access-control-allow-origin",
-              "value": "*"
-            },
-            {
-              "key": "access-control-expose-headers",
-              "value": "X-PokeAPI-Hash,X-PokeAPI-Deploy-Date"
-            },
-            {
-              "key": "cache-control",
-              "value": "public, max-age=86400, s-maxage=86400"
-            },
-            {
-              "key": "age",
-              "value": "335"
-            },
-            {
-              "key": "content-encoding",
-              "value": "gzip"
-            },
-            {
-              "key": "etag",
-              "value": "W/\"2f1-42Hof0Lf4LnViwAa6PJbdycJefs\""
-            },
-            {
-              "key": "function-execution-id",
-              "value": "fib5164a3b0i"
-            },
-            {
-              "key": "server",
-              "value": "cloudflare"
-            },
-            {
-              "key": "strict-transport-security",
-              "value": "max-age=31556926"
-            },
-            {
-              "key": "x-cloud-trace-context",
-              "value": "c9647bf5ab34f9de4faaede2d38c052a;o=1"
-            },
-            {
-              "key": "x-country-code",
-              "value": "US"
-            },
-            {
-              "key": "x-orig-accept-language",
-              "value": "en-US,en;q=0.9"
-            },
-            {
-              "key": "x-pokeapi-deploy-date",
-              "value": "1792457283"
-            },
-            {
-              "key": "x-pokeapi-hash",
-              "value": "e2710d30d14b3f4dc6a02a4a71e8619cd835b7ff"
-            },
-            {
-              "key": "x-powered-by",
-              "value": "Express"
-            },
-            {
-              "key": "accept-ranges",
-              "value": "bytes"
-            },
-            {
-              "key": "x-served-by",
-              "value": "cache-chi-klot8100147-CHI"
-            },
-            {
-              "key": "x-cache",
-              "value": "HIT"
-            },
-            {
-              "key": "x-cache-hits",
-              "value": "0"
-            },
-            {
-              "key": "x-timer",
-              "value": "S1792977167.839819,VS0,VE2"
-            },
-            {
-              "key": "vary",
-              "value": "Accept-Encoding,cookie,need-authorization, x-fh-requested-host, accept-encoding"
-            },
-            {
-              "key": "alt-svc",
-              "value": "h3=\":443\"; ma=86400"
-            },
-            {
-              "key": "nel",
-              "value": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
-            },
-            {
-              "key": "cf-cache-status",
-              "value": "HIT"
-            },
-            {
-              "key": "report-to",
-              "value": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=cuJDsa4FuOfL4w1hYU3cx1u9uS8zmR4iAClmN98E1seiUppOkHA8AHLjtRooi6oNt834Khk0aUeIX7d5feIkeVLNsm%2BX6JbqutQeYmXscoYogYBhcqRAsFtj9GGe\"}]}"
-            },
-            {
-              "key": "cf-ray",
-              "value": "a505a06e892ea71b-SJO"
-            }
-          ],
-          "cookie": [],
-          "body": "{\n  \"id\": 3,\n  \"appeal\": 6,\n  \"jam\": 0,\n  \"effect_entries\": [\n    {\n      \"effect\": \"Si le lanceur est bloqué ce tour après avoir utilisé cette capacité, il recevra deux fois plus de points de blocage.\",\n      \"language\": {\n        \"name\": \"fr\",\n        \"url\": \"https://pokeapi.co/api/v2/language/5/\"\n      }\n    },\n    {\n      \"effect\": \"If the user is jammed this turn after using this move, it will receive twice as many jam points.\",\n      \"language\": {\n        \"name\": \"en\",\n        \"url\": \"https://pokeapi.co/api/v2/language/9/\"\n      }\n    }\n  ],\n  \"flavor_text_entries\": [\n    {\n      \"flavor_text\": \"Le lanceur est plus facilement nerveux après cette démonstration.\",\n      \"language\": {\n        \"name\": \"fr\",\n        \"url\": \"https://pokeapi.co/api/v2/language/5/\"\n      }\n    },\n    {\n      \"flavor_text\": \"After this move, the user is more easily startled.\",\n      \"language\": {\n        \"name\": \"en\",\n        \"url\": \"https://pokeapi.co/api/v2/language/9/\"\n      }\n    }\n  ]\n}"
-        },
         {
           "name": "Get Contest type",
           "originalRequest": {
@@ -305,7 +156,180 @@
           ],
           "cookie": [],
           "body": "{\n  \"id\": 1,\n  \"name\": \"cool\",\n  \"berry_flavor\": {\n    \"name\": \"spicy\",\n    \"url\": \"https://pokeapi.co/api/v2/berry-flavor/1/\"\n  },\n  \"names\": [\n    {\n      \"name\": \"かっこよさ\",\n      \"color\": \"\",\n      \"language\": {\n        \"name\": \"ja-hrkt\",\n        \"url\": \"https://pokeapi.co/api/v2/language/1/\"\n      }\n    },\n    {\n      \"name\": \"帥氣\",\n      \"color\": \"紅\",\n      \"language\": {\n        \"name\": \"zh-hant\",\n        \"url\": \"https://pokeapi.co/api/v2/language/4/\"\n      }\n    },\n    {\n      \"name\": \"Sang-froid\",\n      \"color\": \"Rouge\",\n      \"language\": {\n        \"name\": \"fr\",\n        \"url\": \"https://pokeapi.co/api/v2/language/5/\"\n      }\n    },\n    {\n      \"name\": \"Cool\",\n      \"color\": \"Red\",\n      \"language\": {\n        \"name\": \"en\",\n        \"url\": \"https://pokeapi.co/api/v2/language/9/\"\n      }\n    },\n    {\n      \"name\": \"帅气\",\n      \"color\": \"红\",\n      \"language\": {\n        \"name\": \"zh-hans\",\n        \"url\": \"https://pokeapi.co/api/v2/language/12/\"\n      }\n    }\n  ]\n}"
-        },
+        }
+      ]
+    },
+    {
+      "name": "Get Contest effect",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": [
+        {
+          "name": "Get Contest effect",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://pokeapi.co/api/v2/contest-effect/3/",
+              "protocol": "https",
+              "host": [
+                "pokeapi",
+                "co"
+              ],
+              "path": [
+                "api",
+                "v2",
+                "contest-effect",
+                "3",
+                ""
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": ":status",
+              "value": "200"
+            },
+            {
+              "key": "date",
+              "value": "Tue, 27 Oct 2026 20:55:12 GMT"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "content-length",
+              "value": "360"
+            },
+            {
+              "key": "access-control-allow-origin",
+              "value": "*"
+            },
+            {
+              "key": "access-control-expose-headers",
+              "value": "X-PokeAPI-Hash,X-PokeAPI-Deploy-Date"
+            },
+            {
+              "key": "cache-control",
+              "value": "public, max-age=86400, s-maxage=86400"
+            },
+            {
+              "key": "age",
+              "value": "17151"
+            },
+            {
+              "key": "content-encoding",
+              "value": "gzip"
+            },
+            {
+              "key": "etag",
+              "value": "W/\"2f1-42Hof0Lf4LnViwAa6PJbdycJefs\""
+            },
+            {
+              "key": "function-execution-id",
+              "value": "fib5164a3b0i"
+            },
+            {
+              "key": "server",
+              "value": "cloudflare"
+            },
+            {
+              "key": "strict-transport-security",
+              "value": "max-age=31556926"
+            },
+            {
+              "key": "x-cloud-trace-context",
+              "value": "c9647bf5ab34f9de4faaede2d38c052a;o=1"
+            },
+            {
+              "key": "x-country-code",
+              "value": "US"
+            },
+            {
+              "key": "x-orig-accept-language",
+              "value": "en-US,en;q=0.9"
+            },
+            {
+              "key": "x-pokeapi-deploy-date",
+              "value": "1792457283"
+            },
+            {
+              "key": "x-pokeapi-hash",
+              "value": "e2710d30d14b3f4dc6a02a4a71e8619cd835b7ff"
+            },
+            {
+              "key": "x-powered-by",
+              "value": "Express"
+            },
+            {
+              "key": "accept-ranges",
+              "value": "bytes"
+            },
+            {
+              "key": "x-served-by",
+              "value": "cache-chi-klot8100147-CHI"
+            },
+            {
+              "key": "x-cache",
+              "value": "HIT"
+            },
+            {
+              "key": "x-cache-hits",
+              "value": "0"
+            },
+            {
+              "key": "x-timer",
+              "value": "S1792977167.839819,VS0,VE2"
+            },
+            {
+              "key": "vary",
+              "value": "Accept-Encoding,cookie,need-authorization, x-fh-requested-host, accept-encoding"
+            },
+            {
+              "key": "alt-svc",
+              "value": "h3=\":443\"; ma=86400"
+            },
+            {
+              "key": "nel",
+              "value": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+            },
+            {
+              "key": "cf-cache-status",
+              "value": "HIT"
+            },
+            {
+              "key": "report-to",
+              "value": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=YsX2CHNdLPEua4o22hMPPLabTyn8pCQ38BydugUAOy1hHyrJdlp60u3jbGr85ZrDjvk75Tm54O%2FIPmJWPcEb%2ByZv4ATLKeKY3OZTESS4r%2BqT14Fbz00agcTcRM5s\"}]}"
+            },
+            {
+              "key": "cf-ray",
+              "value": "a51499ae6dc57139-SJO"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"id\": 3,\n  \"appeal\": 6,\n  \"jam\": 0,\n  \"effect_entries\": [\n    {\n      \"effect\": \"Si le lanceur est bloqué ce tour après avoir utilisé cette capacité, il recevra deux fois plus de points de blocage.\",\n      \"language\": {\n        \"name\": \"fr\",\n        \"url\": \"https://pokeapi.co/api/v2/language/5/\"\n      }\n    },\n    {\n      \"effect\": \"If the user is jammed this turn after using this move, it will receive twice as many jam points.\",\n      \"language\": {\n        \"name\": \"en\",\n        \"url\": \"https://pokeapi.co/api/v2/language/9/\"\n      }\n    }\n  ],\n  \"flavor_text_entries\": [\n    {\n      \"flavor_text\": \"Le lanceur est plus facilement nerveux après cette démonstration.\",\n      \"language\": {\n        \"name\": \"fr\",\n        \"url\": \"https://pokeapi.co/api/v2/language/5/\"\n      }\n    },\n    {\n      \"flavor_text\": \"After this move, the user is more easily startled.\",\n      \"language\": {\n        \"name\": \"en\",\n        \"url\": \"https://pokeapi.co/api/v2/language/9/\"\n      }\n    }\n  ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "Get Super Contest effect",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": [
         {
           "name": "Get Super Contest effect",
           "originalRequest": {
@@ -327,8 +351,6 @@
               ]
             }
           },
-          "status": "OK",
-          "code": 200,
           "_postman_previewlanguage": "json",
           "header": [
             {
@@ -337,7 +359,7 @@
             },
             {
               "key": "date",
-              "value": "Mon, 26 Oct 2026 01:24:12 GMT"
+              "value": "Tue, 27 Oct 2026 20:56:00 GMT"
             },
             {
               "key": "content-type",
@@ -437,15 +459,15 @@
             },
             {
               "key": "cf-cache-status",
-              "value": "MISS"
+              "value": "HIT"
             },
             {
               "key": "report-to",
-              "value": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=ik7n9fcDlJcV%2B9jGh9UzNJT7twB6eJi5OPWO1%2FMK%2F6nMwpysfsyAH0W22X3vtWw5YB1Oo7fvz6R4UFeBdsrzuTijYbL2EFoKn0krJB2NgUjbWl4yMqyGnGFwM7ne\"}]}"
+              "value": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=hX9Qa1EHAngS6Y5nWq9Mv6IACA%2B6EvFvkpP89isK0F6hYhcx5D6BbaIpOHuDf9WMXyrSh547HSIT5h8kBqmBuTz4fDyX%2FSym0GLBRkoa0qzGblgcbK8GLNjBzPBF\"}]}"
             },
             {
               "key": "cf-ray",
-              "value": "a505a8f8ca96c846-SJO"
+              "value": "a5149ada7e417139-SJO"
             }
           ],
           "cookie": [],
