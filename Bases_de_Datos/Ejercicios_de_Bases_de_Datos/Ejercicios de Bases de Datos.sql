@@ -1,20 +1,23 @@
 CREATE TABLE `Products`(
-    `Code` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `Code` INT UNSIGNED NOT NULL,
     `Name` VARCHAR(255) NOT NULL,
     `Price` FLOAT(53) NOT NULL,
     `Entry Date` DATE NOT NULL,
     `Brand` VARCHAR(255) NOT NULL,
-    `Stock available` INT NOT NULL
+    `Stock available` INT NOT NULL,
+    PRIMARY KEY(`Code`)
 );
 CREATE TABLE `Invoices`(
-    `Invoice Number` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    `Invoice Number` INT UNSIGNED NOT NULL,
     `Purchase date` DATE NOT NULL,
     `Buyer email` VARCHAR(255) NOT NULL,
     `Total amount` FLOAT(53) NOT NULL,
-    PRIMARY KEY(`Buyer email`)
+    PRIMARY KEY(`Invoice Number`)
 );
+ALTER TABLE
+    `Invoices` ADD PRIMARY KEY(`Buyer email`);
 CREATE TABLE `Products Per Invoice`(
-    `Quantity` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    `Quantity` INT UNSIGNED NOT NULL,
     `Total amount` FLOAT(53) NOT NULL,
     `Invoice Number` INT NOT NULL,
     `Product Code` INT NOT NULL,
