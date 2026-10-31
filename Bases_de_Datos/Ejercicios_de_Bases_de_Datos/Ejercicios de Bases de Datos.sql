@@ -34,10 +34,12 @@ CREATE TABLE `Products Per Shopping Cart`(
     PRIMARY KEY(`Products`)
 );
 ALTER TABLE
-    `Products Per Shopping Cart` ADD CONSTRAINT `products per shopping cart_products_foreign` FOREIGN KEY(`Products`) REFERENCES `Shopping Cart`(`Products`);
+    `Products Per Shopping Cart` ADD PRIMARY KEY(`Product Code`);
 ALTER TABLE
     `Products Per Invoice` ADD CONSTRAINT `products per invoice_product code_foreign` FOREIGN KEY(`Product Code`) REFERENCES `Products`(`Code`);
 ALTER TABLE
+    `Products Per Shopping Cart` ADD CONSTRAINT `products per shopping cart_product code_foreign` FOREIGN KEY(`Product Code`) REFERENCES `Products`(`Code`);
+ALTER TABLE
     `Products Per Invoice` ADD CONSTRAINT `products per invoice_invoice number_foreign` FOREIGN KEY(`Invoice Number`) REFERENCES `Invoices`(`Invoice Number`);
 ALTER TABLE
-    `Products Per Shopping Cart` ADD CONSTRAINT `products per shopping cart_product code_foreign` FOREIGN KEY(`Product Code`) REFERENCES `Products`(`Code`);
+    `Products Per Shopping Cart` ADD CONSTRAINT `products per shopping cart_products_foreign` FOREIGN KEY(`Products`) REFERENCES `Shopping Cart`(`Products`);
