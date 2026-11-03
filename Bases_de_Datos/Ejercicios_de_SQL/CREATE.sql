@@ -16,7 +16,7 @@ Total_amount DECIMAL(8,2) NOT NULL
 );
 
 CREATE TABLE Products_Per_Invoice (
-id INT NOT NULL PRIMARY KEY
+id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
 Quantity INT NOT NULL,
 Total_amount DECIMAL(8,2) NOT NULL,
 Invoice_Number_id INT NOT NULL REFERENCES Invoice(Invoice_Number),
@@ -24,14 +24,14 @@ Product_Code_id INT NOT NULL REFERENCES Products(Code)
 );
 
 CREATE TABLE Shopping_Cart (
-id INT NOT NULL PRIMARY KEY,
+id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
 Buyer_email VARCHAR(50) NOT NULL,
 Products VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE Products_Per_Shopping_Cart (
 id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, 
-Shopping_cart_id VARCHAR(50) NOT NULL REFERENCES Shopping_Cart(id),
+Shopping_cart_id INT NOT NULL REFERENCES Shopping_Cart(id),
 Product_Code_id INT NOT NULL REFERENCES Products(Code)
 );
 
