@@ -1,47 +1,47 @@
 -- SQLite
 --1. Obtenga todos los libros y sus autores (en caso de tenerlos)
 
-SELECT B.Name, A.Name FROM Books AS B
-LEFT JOIN Authors AS A 
-ON B.Author = A.ID;
+SELECT books.Name, authors.Name FROM Books AS books
+LEFT JOIN Authors AS authors 
+ON books.Author = authors.ID;
 
 --Obtenga todos los libros que no tienen autor
 
-SELECT B.Name FROM Books AS B
-LEFT JOIN Authors AS A 
-ON B.Author = A.ID
-WHERE A.Name IS NULL;
+SELECT books.Name FROM Books AS books
+LEFT JOIN Authors AS authors 
+ON books.Author = authors.ID
+WHERE authors.Name IS NULL;
 
 -- Obtenga todos los autores que no tienen libros
 
-SELECT A.Name FROM Authors AS A
-LEFT JOIN Books AS B
-ON A.ID = B.Author
-WHERE B.ID IS NULL;
+SELECT authors.Name FROM Authors AS authors
+LEFT JOIN Books AS books
+ON authors.ID = books.Author
+WHERE books.ID IS NULL;
 
 --Obtenga todos los libros que han sido rentados en algún momento
 
-SELECT DISTINCT B.Name FROM Books as B
-INNER JOIN Rents as R
-ON B.ID = R.BookID
+SELECT DISTINCT books.Name FROM Books as books
+INNER JOIN Rents as rents
+ON books.ID = rents.BookID;
 
 -- Obtenga todos los libros que nunca han sido rentados
 
-SELECT DISTINCT B.Name FROM Books as B
-LEFT JOIN Rents as R
-ON B.ID = R.BookID
-WHERE R.BookID IS NULL;
+SELECT DISTINCT books.Name FROM Books as books
+LEFT JOIN Rents as rents
+ON books.ID = rents.BookID
+WHERE rents.BookID IS NULL;
 
 --Obtenga todos los clientes que nunca han rentado un libro
 
-SELECT DISTINCT C.Name FROM Customers as C
-LEFT JOIN Rents as R
-ON C.ID = R.CustomerID
-WHERE R.CustomerID IS NULL;
+SELECT DISTINCT customer.Name FROM Customers as customer
+LEFT JOIN Rents as rents
+ON customer.ID = rents.CustomerID
+WHERE rents.CustomerID IS NULL;
 
 --Obtenga todos los libros que han sido rentados y están en estado “Overdue” 
 
-SELECT DISTINCT B.Name FROM Books as B
-INNER JOIN Rents as R
-ON B.ID = R.BookID 
-WHERE R.State = 'Overdue'
+SELECT DISTINCT books.Name FROM Books as books
+INNER JOIN Rents as rents
+ON books.ID = rents.BookID 
+WHERE rents.State = 'Overdue';
