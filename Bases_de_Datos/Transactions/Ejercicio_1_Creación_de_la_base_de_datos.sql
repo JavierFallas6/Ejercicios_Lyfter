@@ -1,0 +1,25 @@
+SET search_path TO transactions_exercise;
+
+CREATE TABLE products (
+ID SERIAL NOT NULL PRIMARY KEY,
+product_name VARCHAR(30) NOT NULL,
+stock_available INTEGER NOT NULL
+);
+
+CREATE TABLE users (
+ID SERIAL NOT NULL PRIMARY KEY,
+user_name VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE bills (
+ID INTEGER NOT NULL PRIMARY KEY,
+user_id INTEGER NOT NULL REFERENCES users(ID),
+status VARCHAR(20) NOT NULL DEFAULT 'En proceso'
+);
+
+CREATE TABLE products_per_bill (
+ID SERIAL NOT NULL PRIMARY KEY,
+bill_ID INTEGER NOT NULL REFERENCES bills(ID),
+product_ID INTEGER NOT NULL REFERENCES products(ID),
+quantity INTEGER NOT NULL
+);
