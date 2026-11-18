@@ -1,5 +1,7 @@
 SET search_path TO transactions_exercise;
 
+
+DROP TABLE IF EXISTS purchase_products;
 CREATE TEMP TABLE purchase_products (
     product_name VARCHAR(30),
     variable_quantity INTEGER
@@ -28,6 +30,19 @@ BEGIN
 	variable_user := 'Ana';
 	variable_status := 'En Proceso';
 
+    SELECT user_name, ID
+    INTO variable_user, variable_user_ID
+    FROM users
+    WHERE user_name = variable_user;
+
+    IF variable_user IS NULL THEN
+      RAISE EXCEPTION 'User no encontrado. Abortando transacción.';
+    END IF;
+
+	INSERT INTO bills (user_id,status)
+	VALUES (variable_user_ID,variable_status)
+	RETURNING ID INTO variable_bill_ID;
+
     FOR item IN
         SELECT product_name, variable_quantity
         FROM purchase_products
@@ -46,18 +61,6 @@ BEGIN
       RAISE EXCEPTION 'Stock insuficiente. Abortando transacción.';
     END IF;
 
-    SELECT user_name, ID
-    INTO variable_user, variable_user_ID
-    FROM users
-    WHERE user_name = variable_user;
-	
-    IF variable_user IS NULL THEN
-      RAISE EXCEPTION 'User no encontrado. Abortando transacción.';
-    END IF;
-
-	INSERT INTO bills (user_id,status)
-	VALUES (variable_user_ID,variable_status)
-	RETURNING ID INTO variable_bill_ID;
 
 	INSERT INTO products_per_bill (bill_id,product_id,quantity)
 	VALUES (variable_bill_ID,variable_product_ID,item.variable_quantity);
