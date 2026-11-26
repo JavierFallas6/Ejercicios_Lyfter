@@ -23,7 +23,7 @@ def post_task():
         
     required_fields = ["ID", "Title", "Description", "Status"]
     for field in required_fields:
-        if field not in request_body or request_body[field] is None or request_body[field] == "":
+        if field not in request_body or request_body[field] is None or str(request_body[field]).strip() == "":
             return {"error": f"{field} is required"}, 400
 
     request_body["ID"] = str(request_body["ID"])        
@@ -37,7 +37,7 @@ def post_task():
     tasks.append(request_body)
     dt.save_json(tasks)
 
-    return {"data": tasks}, 201
+    return {"data": request_body}, 201
 
 @app.route("/tasks/<task_id>", methods=["PUT"])
 def put_task(task_id):
@@ -50,7 +50,7 @@ def put_task(task_id):
         if str(task["ID"]) == str(task_id):
             required_fields = ["Title", "Description", "Status"]
             for field in required_fields:
-                if field not in request_body or request_body[field] is None or request_body[field] == "":
+                if field not in request_body or request_body[field] is None or str(request_body[field]).strip() == "":
                     return {"error": f"{field} is required"}, 400
 
             valid_status = ["Pending", "In Progress", "Completed"]
